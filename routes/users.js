@@ -15,15 +15,19 @@ var data = '';
 //Promise way
 var fetching = fetch(url); //return Promise
 
-fetching.then(function(res) {
-    return res.json();
-})
-.then(function(json) {
-    data = json;
-})
-.catch(function(err) {
-    console.log(err);
-});
+var callPromise = () => {
+    fetching.then(function(res) {
+        return res.json();
+    })
+    .then(function(json) {
+        data = json;
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+};
+
+callPromise();
 
 //Reactive Programming(Observables) way
 
