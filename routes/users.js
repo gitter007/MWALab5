@@ -31,50 +31,50 @@ var data = {};
 
 //Reactive Programming(Observables) way
 
-function dataProcess(f) {
-    f.buffer().then(function(res) 
-    {
-        return res.toString();
-    })
-    .then(function(json) {
-        data = JSON.parse(json);
-    })
-    .catch((error) =>
-        {new Error("Error during processing");}
-        );
-}
-Rx.Observable.fromPromise(fetch(url))
-    .subscribe(
-        (res)=> {
-                dataProcess(res);
-                //console.log(res.buffer().then());
-        }
-        ,
-        (error)=> {
-            console.log(error);
-        }
-        ,
-        () => console.log('Reactive Completed'));        
+// function dataProcess(f) {
+//     f.buffer().then(function(res) 
+//     {
+//         return res.toString();
+//     })
+//     .then(function(json) {
+//         data = JSON.parse(json);
+//     })
+//     .catch((error) =>
+//         {new Error("Error during processing");}
+//         );
+// }
+// Rx.Observable.fromPromise(fetch(url))
+//     .subscribe(
+//         (res)=> {
+//                 dataProcess(res);
+//                 //console.log(res.buffer().then());
+//         }
+//         ,
+//         (error)=> {
+//             console.log(error);
+//         }
+//         ,
+//         () => console.log('Reactive Completed'));        
 
 
 //Async Wait way
-// async function callAsync() {
-//     try{
-//         console.log('Before reading data Async Await');
-//         let results = await(fetch(url));
-//         console.log('After Async Await');
-//        return results.json();
-//     }
-//     catch(error){
-//         console.log(error.message);
-//     }
-// }
+async function callAsync() {
+    try{
+        console.log('Before reading data Async Await');
+        let results = await(fetch(url));
+        console.log('After Async Await');
+       return results.json();
+    }
+    catch(error){
+        console.log(error.message);
+    }
+}
 
-// var data = {};
-// callAsync()    
-//     .then(function(json) {
-//         data = json;
-//     });
+var data = {};
+callAsync()    
+    .then(function(json) {
+        data = json;
+    });
 
 
 //Routing
