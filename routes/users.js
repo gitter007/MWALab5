@@ -7,19 +7,26 @@
 var express = require('express');
 var router = express.Router();
 var fetch = require('node-fetch');
+var Rx = require('@reactivex/rxjs');
 let url ='http://jsonplaceholder.typicode.com/users/';
 
 var data = '';
 
 //Promise way
-fetch(url)
+var fetching = fetch(url)
     .then(function(res) {
         return res.json();
-    }).then(function(json) {
+    })
+    .then(function(json) {
         data = json;
+    })
+    .catch(function(err) {
+        console.log(err);
     });
 
+//Reactive Programming(Observables) way
 
+//Async Wait way
 
 router.get('/', function(req, res, next) {
   //res.send('respond with a resource');
