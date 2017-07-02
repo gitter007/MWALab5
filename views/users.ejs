@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  </head>
+  <body>
+
+    <p>Welcome to Users table</p>
+    <div>
+      
+      <table class="table">
+        <thead>
+          <tr class="tr">
+            <th><input type="text" class="form-control" placeholder="Id" ></th>
+            <th><input type="text" class="form-control" placeholder="Name" ></th>
+            <th><input type="text" class="form-control" placeholder="UserName" ></th>
+            <th><input type="text" class="form-control" placeholder="Email" ></th>
+            <th><input type="text" class="form-control" placeholder="City" ></th>
+            <th><input type="text" class="form-control" placeholder="Zip code" ></th>
+            <th><input type="text" class="form-control" placeholder="Latitude" ></th>
+            <th><input type="text" class="form-control" placeholder="Longtitude" ></th>
+            <th><input type="text" class="form-control" placeholder="Website" ></th>
+          </tr>
+        </thead>
+        <% if(items.length){
+
+            for(var i = 0;i < items.length;i++) { %>
+              <tr class="tr">
+                
+                <td><%=items[i]['id']%></td>
+                <td><%=items[i]['name']%></td>
+                <td><%=items[i]['username']%></td>
+                <td><%=items[i].email%></td>
+                <td><%=items[i].address.city%></td>
+                <td><%=items[i].address.zipcode%></td>
+                <td><%=items[i].address.geo.lat%></td>
+                <td><%=items[i].address.geo.lng%></td>
+                <td><%=items[i].website%></td>
+              </tr>
+          <% }
+
+        } %>
+      </table>
+    </div>
+  </body>
+</html>
