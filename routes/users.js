@@ -13,16 +13,17 @@ let url ='http://jsonplaceholder.typicode.com/users/';
 var data = '';
 
 //Promise way
-var fetching = fetch(url)
-    .then(function(res) {
-        return res.json();
-    })
-    .then(function(json) {
-        data = json;
-    })
-    .catch(function(err) {
-        console.log(err);
-    });
+var fetching = fetch(url); //return Promise
+
+fetching.then(function(res) {
+    return res.json();
+})
+.then(function(json) {
+    data = json;
+})
+.catch(function(err) {
+    console.log(err);
+});
 
 //Reactive Programming(Observables) way
 
