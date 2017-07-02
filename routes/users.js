@@ -12,7 +12,7 @@ let url ='http://jsonplaceholder.typicode.com/users/';
 
 var data = {};
 
-//Promise way
+//Promise way 
 var fetching = fetch(url); //return Promise
 
 var callPromise = () => {
