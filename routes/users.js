@@ -11,6 +11,7 @@ let url ='http://jsonplaceholder.typicode.com/users/';
 
 var data = '';
 
+//Promise way
 fetch(url)
     .then(function(res) {
         return res.json();
@@ -19,7 +20,7 @@ fetch(url)
     });
 
 
-/* GET users listing. */
+
 router.get('/', function(req, res, next) {
   //res.send('respond with a resource');
   //console.log(typeof usersJSON);
