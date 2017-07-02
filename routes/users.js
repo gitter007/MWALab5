@@ -13,48 +13,48 @@ let url ='http://jsonplaceholder.typicode.com/users/';
 var data = {};
 
 //Promise way 
-var fetching = fetch(url); //return Promise
+// var fetching = fetch(url); //return Promise
 
-var callPromise = () => {
-    fetching.then(function(res) {
-        return res.json();
-    })
-    .then(function(json) {
-        data = json;
-    })
-    .catch(function(err) {
-        console.log(err);
-    });
-};
+// var callPromise = () => {
+//     fetching.then(function(res) {
+//         return res.json();
+//     })
+//     .then(function(json) {
+//         data = json;
+//     })
+//     .catch(function(err) {
+//         console.log(err);
+//     });
+// };
 
-callPromise();
+// callPromise();
 
 //Reactive Programming(Observables) way
 
-// function dataProcess(f) {
-//     f.buffer().then(function(res) 
-//     {
-//         return res.toString();
-//     })
-//     .then(function(json) {
-//         data = JSON.parse(json);
-//     })
-//     .catch((error) =>
-//         {new Error("Error during processing");}
-//         );
-// }
-// Rx.Observable.fromPromise(fetch(url))
-//     .subscribe(
-//         (res)=> {
-//                 dataProcess(res);
-//                 //console.log(res.buffer().then());
-//         }
-//         ,
-//         (error)=> {
-//             console.log(error);
-//         }
-//         ,
-//         () => console.log('Reactive Completed'));        
+function dataProcess(f) {
+    f.buffer().then(function(res) 
+    {
+        return res.toString();
+    })
+    .then(function(json) {
+        data = JSON.parse(json);
+    })
+    .catch((error) =>
+        {new Error("Error during processing");}
+        );
+}
+Rx.Observable.fromPromise(fetch(url))
+    .subscribe(
+        (res)=> {
+                dataProcess(res);
+                //console.log(res.buffer().then());
+        }
+        ,
+        (error)=> {
+            console.log(error);
+        }
+        ,
+        () => console.log('Reactive Completed'));        
 
 
 //Async Wait way
